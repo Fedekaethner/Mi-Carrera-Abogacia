@@ -70,7 +70,7 @@ function renderMalla() {
   // Recorrer años ordenados
   Object.keys(agrupadas).sort((a, b) => a - b).forEach(anio => {
     const divAnio = document.createElement("div");
-    divAnio.className = "anio-cuatrimestre-vertical";
+    divAnio.className = "anio-columna"; // Cambiado para que años estén en fila
 
     const tituloAnio = document.createElement("h2");
     tituloAnio.textContent = `${anio}º Año`;
