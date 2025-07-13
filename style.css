@@ -9,16 +9,32 @@ h1 {
   color: #c71585;
 }
 
+#malla-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.anio-cuatrimestre-vertical {
+  margin-bottom: 30px;
+  border-left: 4px solid #c71585;
+  padding-left: 12px;
+}
+
+.cuatrimestre-vertical {
+  margin-top: 12px;
+  padding-left: 12px;
+  border-left: 2px solid #f78fb3;
+}
+
 .materia {
   padding: 10px;
   margin: 6px 0;
   border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.anio-cuatrimestre {
-  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
 }
 
 .bloqueada {
@@ -43,4 +59,5 @@ h1 {
   color: #666;
   text-decoration: line-through;
   pointer-events: none;
+  cursor: default;
 }
