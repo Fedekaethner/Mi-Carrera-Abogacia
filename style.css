@@ -11,16 +11,21 @@ h1 {
 
 #malla-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* fila horizontal */
   gap: 1.5rem;
-  max-width: 700px;
+  max-width: 100%;
   margin: 0 auto;
+  overflow-x: auto; /* scroll horizontal si hay muchos años */
+  padding-bottom: 10px;
 }
 
 .anio-cuatrimestre-vertical {
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column; /* materias en columna vertical */
+  min-width: 220px; /* ancho fijo para cada año */
   border-left: 4px solid #c71585;
   padding-left: 12px;
+  box-sizing: border-box;
 }
 
 .cuatrimestre-vertical {
@@ -55,9 +60,4 @@ h1 {
 }
 
 .aprobada {
-  background-color: #e0e0e0;
-  color: #666;
-  text-decoration: line-through;
-  pointer-events: none;
-  cursor: default;
-}
+  background-color: #e0e0
