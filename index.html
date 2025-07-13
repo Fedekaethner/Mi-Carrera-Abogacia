@@ -5,12 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Malla Abogacía Vertical</title>
   <style>
-    body {
-      background: linear-gradient(to bottom, #fde6fa, #f3e6fd);
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #6c3483;
+     body {
+  background: #ffffff;
     }
 
     header {
@@ -66,7 +62,8 @@
       border-radius: 10px;
       padding: 10px;
       margin-bottom: 8px;
-      cursor: pointer;
+      cursor: default;
+      ponter-events: none;
       opacity: 0.5;
       transition: all 0.2s;
     }
@@ -74,6 +71,8 @@
     .materia.desbloqueada {
       opacity: 1;
       box-shadow: 0 0 4px #e6b8fa;
+      pointer-events: auto;
+      cursor: pointer;
     }
 
     .materia.aprobada {
