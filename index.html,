@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Malla Interactiva Abogacía</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #fde6fa, #e7f7fd, #ede6fb);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(90deg, #f9d2e6, #e2eafc, #e5d0fa);
+      color: #6c3483;
+      padding: 28px 0 16px 0;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+      box-shadow: 0 2px 16px #e7bde2bb;
+    }
+    .malla-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 32px;
+      background: #fff7fc;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(198, 169, 246, 0.11);
+    }
+    .anio {
+      margin-bottom: 36px;
+    }
+    .anio h2 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      color: #8e44ad;
+    }
+    .cuatri {
+      margin-bottom: 28px;
+    }
+    .cuatri h3 {
+      font-size: 1.2rem;
+      color: #6c3483;
+      margin-bottom: 12px;
+    }
+    .materias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .materia {
+      flex: 1 1 220px;
+      background: linear-gradient(135deg, #ffe3f1, #e2f0fb, #f0e9ff);
+      border: 1.5px solid #e8eaf6;
+      border-radius: 12px;
+      padding: 18px 12px;
+      position: relative;
+      text-align: center;
+      color: #5c246e;
+      font-weight: 500;
+      opacity: 0.5;
+      filter: grayscale(0.3);
+      transition: all 0.2s ease;
+      cursor: not-allowed;
+    }
+    .materia.desbloqueada {
+      opacity: 1;
+      filter: none;
+      cursor: pointer;
+      border-color: #a5aae3;
+      background: linear-gradient(135deg, #fbd4ec, #dce9fd, #e6d8fb);
+    }
+    .materia.aprobada {
+      background: linear-gradient(135deg, #e3ffec, #e2f0fb);
+      color: #25906b;
+      border-color: #b8f7c9;
+      text-decoration: line-through;
+      opacity: 0.9;
+      filter: none;
+    }
+    .materia .nombre {
+      font-size: 1.05em;
+      font-weight: 600;
+    }
+    .materia .correlativas {
+      font-size: 0.9em;
+      margin-top: 8px;
+      background: #f6e9fa;
+      padding: 4px 6px;
+      border-radius: 6px;
+      border: 1px dashed #d6b6e7;
+      color: #8e44ad;
+    }
+    .leyenda {
+      max-width: 800px;
+      margin: 18px auto;
+      background: #f6e9fa;
+      color: #6c3483;
+      border-radius: 7px;
+      padding: 6px 18px;
+      font-size: 1em;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    .leyenda .cuadro {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      border-radius: 5px;
+      margin-right: 6px;
+      border: 1.5px solid #c2b6e7;
+    }
+    .l1 { background: linear-gradient(135deg, #fbd4ec, #dce9fd, #e6d8fb); }
+    .l2 { background: linear-gradient(135deg, #e3ffec, #e2f0fb); }
+    .l3 { background: #eeeeee; }
+    .reset-btn {
+      margin-left: auto;
+      background: #e5d0fa;
+      border: none;
+      color: #6c3483;
+      padding: 7px 17px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 1px 4px #d7c7f6bb;
+    }
+    .reset-btn:hover {
+      background: #fcdff7;
+    }
+    @media (max-width: 800px) {
+      .materias {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Malla Interactiva Abogacía</header>
+
+  <div class="leyenda">
+    <span><span class="cuadro l1"></span> Desbloqueada</span>
+    <span><span class="cuadro l2"></span> Aprobada</span>
+    <span><span class="cuadro l3"></span> Bloqueada</span>
+    <button class="reset-btn" onclick="resetearMalla()">Reiniciar Progreso</button>
+  </div>
+
+  <div class="malla-container" id="mallaContainer"></div>
+
+  <script>
+    const materias = [
+      { anio: 1, cuatri: 1, id: "ctcc", nombre: "Contenidos Transversales para la Construcción de la Ciudadanía", correl: [] },
+      { anio: 1, cuatri: 1, id: "hpj", nombre: "Historia del Pensamiento Político y Jurídico", correl: [] },
+      { anio: 1, cuatri: 1, id: "tdj", nombre: "Teoría del Derecho y la Justicia", correl: [] },
+      { anio: 1, cuatri: 2, id: "te", nombre: "Teoría del Estado", correl: [] },
+      { anio: 1, cuatri: 2, id: "ne", nombre: "Nociones de Economía", correl: [] },
+      { anio: 1, cuatri: 2, id: "d1", nombre: "Destrezas I: Investigación y Escritura Jurídicas Básicas", correl: [] },
+
+      { anio: 2, cuatri: 1, id: "log", nombre: "Lógica", correl: ["ctcc", "hpj", "tdj"] },
+      { anio: 2, cuatri: 1, id: "dp", nombre: "Derecho Privado: Teoría de la Rel. Juríd. y de la Persona", correl: ["ctcc", "tdj", "ne", "d1"] },
+      { anio: 2, cuatri: 1, id: "dc", nombre: "Derecho Constitucional", correl: ["ctcc", "hpj", "te", "tdj"] },
+      { anio: 2, cuatri: 2, id: "dpi", nombre: "Derecho Penal I Parte General", correl: ["dc"] },
+      { anio: 2, cuatri: 2, id: "occ", nombre: "Obligaciones Civiles y Comerciales", correl: ["dp"] },
+      { anio: 2, cuatri: 2, id: "ns", nombre: "Nociones de Sociología", correl: ["ctcc", "hpj", "te"] },
+
+      { anio: 3, cuatri: 1, id: "cont", nombre: "Contratos", correl: ["occ"] },
+      { anio: 3, cuatri: 1, id: "dpii", nombre: "Derecho Penal II Parte Especial", correl: ["dpi"] },
+      { anio: 3, cuatri: 1, id: "opt1", nombre: "Optativa I", correl: [] },
+      { anio: 3, cuatri: 2, id: "dp1", nombre: "Derecho Procesal I: Teoría General del Proceso y Proceso Penal", correl: ["dc", "dp", "dpii"] },
+      { anio: 3, cuatri: 2, id: "den", nombre: "Derecho de la Empresa y los Negocios", correl: ["cont"] },
+      { anio: 3, cuatri: 2, id: "dh", nombre: "Derechos Humanos", correl: ["dc"] },
+      { anio: 3, cuatri: 2, id: "d2", nombre: "Destrezas II: Argumentación Oral y Escrita", correl: ["d1", "log", "ns"] },
+
+      { anio: 4, cuatri: 1, id: "dsdc", nombre: "Derecho Societario y Derecho Cambiario", correl: ["den"] },
+      { anio: 4, cuatri: 1, id: "dp2", nombre: "Derecho Procesal II: Proceso Civil y Comercial", correl: ["dp1", "occ"] },
+      { anio: 4, cuatri: 1, id: "da", nombre: "Derecho Ambiental", correl: ["dc", "cont"] },
+      { anio: 4, cuatri: 1, id: "opt2", nombre: "Optativa II", correl: [] },
+      { anio: 4, cuatri: 2, id: "dr", nombre: "Derecho Reales", correl: ["dc", "cont"] },
+      { anio: 4, cuatri: 2, id: "dcon", nombre: "Derechos del Consumidor", correl: ["dc", "cont"] },
+      { anio: 4, cuatri: 2, id: "d3", nombre: "Destrezas III: Investigación Jurídica", correl: ["occ", "d2", "dpi"] },
+      { anio: 4, cuatri: 2, id: "dtrs", nombre: "Derecho del trabajo y derecho de la seguridad social", correl: ["dc", "cont"] },
+
+      { anio: 5, cuatri: 1, id: "fd", nombre: "Filosofía del Derecho", correl: ["dh", "ns"] },
+      { anio: 5, cuatri: 1, id: "dfs", nombre: "Derecho de Familia y de las Sucesiones", correl: ["dr", "dp1"] },
+      { anio: 5, cuatri: 1, id: "dt", nombre: "Derecho del Transporte", correl: ["den"] },
+      { anio: 5, cuatri: 2, id: "dadm", nombre: "Derecho Administrativo", correl: ["dr", "dp2"] },
+      { anio: 5, cuatri: 2, id: "opt3", nombre: "Optativa III", correl: [] },
+      { anio: 5, cuatri: 2, id: "cq", nombre: "Concursos y Privilegios", correl: ["dsdc", "dp1"] },
+      { anio: 5, cuatri: 2, id: "d4", nombre: "Destrezas IV: Habilidades para el Litigio", correl: ["d3", "cont", "dp1"] },
+
+      { anio: 6, cuatri: 1, id: "dip", nombre: "Derecho Internacional Público y Política Exterior", correl: ["dh"] },
+      { anio: 6, cuatri: 1, id: "dtf", nombre: "Derecho Tributario y Derecho Financiero", correl: ["dadm"] },
+      { anio: 6, cuatri: 1, id: "opt4", nombre: "Optativa IV", correl: [] },
+      { anio: 6, cuatri: 2, id: "opt5", nombre: "Optativa V", correl: [] },
+      { anio: 6, cuatri: 1, id: "d5", nombre: "Destrezas V: Práctica Profesional Aplicada", correl: ["dfs", "dp2", "d4"] },
+      { anio: 6, cuatri: 2, id: "dipi", nombre: "Derecho Internacional Privado", correl: ["dfs", "cq"] },
+    ];
+
+    const STORAGE_KEY = "malla_abogacia_estado";
+
+    function guardarEstado(aprobadas) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(aprobadas));
+    }
+    function cargarEstado() {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return Array.isArray(data) ? data : [];
+    }
+    function resetearMalla() {
+      if (confirm("¿Seguro que quieres reiniciar tu progreso?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        renderMalla();
+      }
+    }
+    function getMateria(id) {
+      return materias.find(m => m.id === id);
+    }
+    function puedeDesbloquear(m, aprobadas) {
+      return m.correl.every(c => aprobadas.includes(c));
+    }
+
+    function renderMalla() {
+      const container = document.getElementById("mallaContainer");
+      const aprobadas = cargarEstado();
+      let html = "";
+
+      for (let anio = 1; anio <= 6; anio++) {
+        html += `<div class="anio"><h2>${anio}° Año</h2>`;
+        for (let cuatri = 1; cuatri <= 2; cuatri++) {
+          const grupo = materias.filter(m => m.anio === anio && m.cuatri === cuatri);
+          if (!grupo.length) continue;
+          html += `<div class="cuatri"><h3>${cuatri}° Cuatrimestre</h3><div class="materias">`;
+          grupo.forEach(m => {
+            const aprobada = aprobadas.includes(m.id);
+            const desbloqueada = puedeDesbloquear(m, aprobadas);
+            html += `<div class="materia${desbloqueada ? ' desbloqueada' : ''}${aprobada ? ' aprobada' : ''}" 
+              data-id="${m.id}" ${!desbloqueada ? 'title="Correlativas: ' + m.correl.map(cid => getMateria(cid)?.nombre || "").join(', ') + '"' : ''}>
+              <div class="nombre">${m.nombre}</div>
+            </div>`;
+          });
+          html += `</div></div>`;
+        }
+        html += `</div>`;
+      }
+
+      container.innerHTML = html;
+
+      document.querySelectorAll(".materia.desbloqueada").forEach(el => {
+        el.onclick = () => {
+          const id = el.dataset.id;
+          let estado = cargarEstado();
+          if (estado.includes(id)) {
+            estado = estado.filter(x => x !== id);
+          } else {
+            estado.push(id);
+          }
+          guardarEstado(estado);
+          renderMalla();
+        }
+      });
+    }
+
+    renderMalla();
+  </script>
+</body>
+</html>
