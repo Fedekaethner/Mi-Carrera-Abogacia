@@ -3,104 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abogacía - UNT ✨</title>
+  <title>Abogacía - UNT</title>
   <style>
     body {
-      background-color: #fff;
+      background-color: #fffafc;
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      color: #4a235a;
+      color: #333;
     }
     header {
-      background: #fce4ec;
-      color: #ad1457;
-      padding: 24px 0;
+      background-color: #ffd9ec;
+      padding: 20px;
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
-      box-shadow: 0 2px 8px rgba(240, 180, 200, 0.5);
+      color: #c0397d;
+      box-shadow: 0 2px 8px #f9c4dc;
     }
-    .malla-container {
-      max-width: 1200px;
-      margin: 20px auto;
+    .contenedor {
+      max-width: 1000px;
+      margin: 30px auto;
       padding: 20px;
     }
-    .anio h2 {
-      background: #f8bbd0;
-      color: #880e4f;
-      padding: 10px;
-      border-radius: 8px;
+    .anio {
+      margin-bottom: 40px;
     }
-    .materias {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .anio h2 {
+      color: #c0397d;
+      border-bottom: 2px solid #ffd6eb;
+      margin-bottom: 20px;
+    }
+    .cuatri {
+      margin-bottom: 20px;
+    }
+    .cuatri h3 {
+      color: #e0558c;
+      margin-bottom: 10px;
     }
     .materia {
-      flex: 1 1 200px;
-      padding: 16px;
-      border-radius: 10px;
-      background: #fce4ec;
-      box-shadow: 0 2px 8px rgba(252, 228, 236, 0.7);
-      opacity: 0.5;
+      background-color: #ffe5f0;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ffd1e6;
+      box-shadow: 0 2px 4px #fcd6e6;
       transition: all 0.2s;
-      cursor: not-allowed;
-      text-align: center;
+      opacity: 0.5;
+      text-decoration: none;
     }
     .materia.desbloqueada {
       opacity: 1;
       cursor: pointer;
-      border: 2px solid #f48fb1;
     }
     .materia.aprobada {
-      background: #f8bbd0;
-      color: #4a235a;
       text-decoration: line-through;
+      background-color: #d8f8e1;
+      color: #2e7d61;
+      opacity: 1;
     }
-    .leyenda, .progreso-container, .promedio-container {
-      background: #fce4ec;
-      margin: 20px auto;
-      padding: 14px;
-      border-radius: 10px;
-      max-width: 800px;
-      color: #6a1b9a;
+    .materia .correlativas {
+      font-size: 0.9em;
+      color: #a45a78;
+      margin-top: 5px;
     }
-    .cuadro {
-      width: 14px;
-      height: 14px;
-      display: inline-block;
-      margin-right: 6px;
-      border-radius: 3px;
-      border: 1px solid #c2185b;
+    .tabla-notas {
+      margin-top: 60px;
+      border-collapse: collapse;
+      width: 100%;
     }
-    .l1 { background: #fce4ec; }
-    .l2 { background: #f8bbd0; }
-    .l3 { background: #e0e0e0; }
+    .tabla-notas th, .tabla-notas td {
+      border: 1px solid #ffcce0;
+      padding: 10px;
+      text-align: left;
+    }
+    .tabla-notas th {
+      background-color: #ffd6eb;
+      color: #c0397d;
+    }
   </style>
 </head>
 <body>
   <header>Abogacía - UNT ✨</header>
-  <div class="leyenda">
-    <span><span class="cuadro l1"></span> Desbloqueada</span>
-    <span><span class="cuadro l2"></span> Aprobada</span>
-    <span><span class="cuadro l3"></span> Bloqueada</span>
+
+  <div class="contenedor" id="malla"></div>
+
+  <div class="contenedor">
+    <h2>Notas y Condiciones</h2>
+    <table class="tabla-notas">
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th>Nota</th>
+          <th>Condición</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Contenidos Transversales</td><td></td><td></td></tr>
+        <tr><td>Historia del Pensamiento</td><td></td><td></td></tr>
+        <tr><td>Teoría del Derecho y la justicia</td><td></td><td></td></tr>
+        <tr><td>Teoría del Estado</td><td></td><td></td></tr>
+        <tr><td>nociones de economia</td><td></td><td></td></tr></td><td>
+        <tr><td>Destrezas I: Investigación y Escritura Jurídicas Básicas</td><td></td><td></td></tr></td><td>
+        <tr><td>Lógica</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Privado: Teoría de la Rel. Juríd. y de la Persona</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Penal I Parte General</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Constitucional</td><td></td><td></td></tr></td><td>
+        <tr><td>Obligaciones Civiles y Comerciales</td><td></td><td></td></tr></td><td>
+        <tr><td>Nociones de Sociología</td><td></td><td></td></tr></td><td> 
+        <tr><td>Contratos</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Penal II Parte Especial</td><td></td><td></td></tr></td><td>
+        <tr><td>Optativa I</td><td></td><td></td></tr></td><td>  
+        <tr><td>Derecho Procesal I: Teoría General del Proceso y Proceso Penal</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho de la Empresa y los Negocios</td><td></td><td></td></tr></td><td>
+        <tr><td>Derechos Humanos</td><td></td><td></td></tr></td><td>
+        <tr><td>Destrezas II: Argumentación Oral y Escrita</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Societario y Derecho Cambiario</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Procesal II: Proceso Civil y Comercial </td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Ambiental</td><td></td><td></td></tr></td><td>
+        <tr><td>Optativa II</td><td></td><td></td></tr></td><td>
+        <tr><td>Derechos del Consumidor</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Reales</td><td></td><td></td></tr></td><td> 
+        <tr><td>Destrezas III: Investigación Jurídica</td><td></td><td></td></tr></td><td>
+        <tr><td>Derecho Reales</td><td></td><td></td></tr></td><td> 
+        <tr><td>Derecho del trabajo y derecho de la seguridad social</td><td></td><td></td></tr></td><td> 
+        <tr><td>Filosofía del Derecho</td><td></td><td></td></tr></td><td> 
+        <tr><td>Derecho de Familia y de las Sucesiones</td><td></td><td></td></tr></td><td> 
+        <tr><td>Derecho del Transporte</td><td></td><td></td></tr></td><td> 
+        <tr><td>Derecho Administrativo</td><td></td><td></td></tr></td><td> 
+        <tr><td>Optativa III</td><td></td><td></td></tr></td><td> 
+        <tr><td>concursos y privilegios</td><td></td><td></td></tr></td><td> 
+        <tr><td>Destrezas IV: Habilidades para el Litigio</td><td></td><td></td></tr></td><td> 
+        <tr><td>Derecho Internacional Público y Politica exterior</td><td></td><td></td></tr></td><td> 
+        <tr><td>Derecho Tributario y Derecho Financiero</td><td></td><td></td></tr></td><td> 
+        <tr><td>Optativa IV</td><td></td><td></td></tr></td><td>  
+        <tr><td>optativa V</td><td></td><td></td></tr></td><td> 
+        <tr><td>Destrezas V: Práctica Profesional Aplicada</td><td></td><td></td></tr></td><td> 
+        <tr><td>Derecho Internacional Privado</td><td></td><td></td></tr></td><td>
+       
+      </tbody>
+    </table>
   </div>
-  <div class="malla-container" id="mallaContainer"></div>
-  <div class="progreso-container" id="progreso"></div>
-  <div class="promedio-container" id="promedio"></div>
 
   <script>
     const materias = [
-    / 1er Año
+      / 1er Año
     {anio:1, nombre: "Contenidos Transversales para la Construcción de la Ciudadanía", tipo: "oblig", anio: 1, cuatri: 1, correl: [] },
     {anio:1, nombre: "Historia del Pensamiento Político y Jurídico", tipo: "oblig", anio: 1, cuatri: 1, correl: [] },
     {anio:1, nombre: "Teoría del Derecho y la Justicia", tipo: "oblig", anio: 1, cuatri: 2, correl: [] },
     {anio:1, nombre: "Teoría del Estado", tipo: "oblig", anio: 1, cuatri: 2, correl: [] },
-    {anio:1, nombre: "Nociones de Economía", tipo: "oblig", anio: 1, cuatri: 2, correl: [] },
+    {anio:1, nombre: "nociones de economia" , tipo: "oblig", anio: 1, cuatri: 2, correl: [] },
     {anio:1, nombre: "Destrezas I: Investigación y Escritura Jurídicas Básicas", tipo: "destrezas", anio: 1, cuatri: 2, correl: [] },
 
-    // 2do Año
+    / 2do Año
     {anio:2, nombre: "Lógica", tipo: "oblig", anio: 2, cuatri: 1, correl: ["Contenidos Transversales para la Construcción de la Ciudadanía", "Historia del Pensamiento Político y Jurídico", "Teoría del Derecho y la Justicia"] },
     {anio:2, nombre: "Derecho Privado: Teoría de la Rel. Juríd. y de la Persona", tipo: "oblig", anio: 2, cuatri: 1, correl: ["Contenidos Transversales para la Construcción de la Ciudadanía","Teoría del Derecho y la Justicia", "Nociones de Economía","Destrezas I: Investigación y Escritura Jurídicas Básicas"] },
     {anio:2, nombre: "Derecho Penal I Parte General", tipo: "oblig", anio: 2, cuatri: 2, correl: ["Derecho Constitucional"] },
@@ -108,7 +163,7 @@
     {anio:2, nombre: "Obligaciones Civiles y Comerciales", tipo: "oblig", anio: 2, cuatri: 2, correl: ["Derecho Privado: Teoría de la Rel. Juríd. y de la Persona"] },
     {anio:2, nombre: "Nociones de Sociología", tipo: "oblig", anio: 2, cuatri: 2, correl: ["Contenidos Transversales para la Construcción de Ciudadanía", "Historia del Pensamiento Político y Jurídico", "Teoría del Estado"] },
 
-    // 3er Año
+    / 3er Año
     {anio:3,nombre: "Contratos", tipo: "oblig", anio: 3, cuatri: 1, correl: ["Obligaciones Civiles y Comerciales"] },
     {anio:3, nombre: "Derecho Penal II Parte Especial", tipo: "oblig", anio: 3, cuatri: 1, correl: ["Derecho Penal I Parte General"] },
     {anio:3, nombre: "Optativa I", tipo: "optativa", anio: 3, cuatri: 1, correl: [] },
@@ -118,7 +173,7 @@
     {anio:3, nombre: "Destrezas II: Argumentación Oral y Escrita", tipo: "destrezas", anio: 3, cuatri: 2, correl: ["Destrezas I: Investigación y Escritura Jurídicas Básicas","Lógica","Nociones de Sociología"] },
 
 
-    // 4to Año
+    / 4to Año
     {anio:4, nombre: "Derecho Societario y Derecho Cambiario", tipo: "oblig", anio: 4, cuatri: 1, correl: ["Derecho de la Empresa y los Negocios"] },
     {anio:4, nombre: "Derecho Procesal II: Proceso Civil y Comercial", tipo: "oblig", anio: 4, cuatri: 1, correl: ["Derecho Procesal I: Teoría General del Proceso y Proceso Penal", "Obligaciones Civiles y Comerciales"] },
     {anio:4, nombre: "Derecho Ambiental", tipo: "oblig", anio: 4, cuatri: 1, correl: ["Derecho Constitucional", "Contratos"] },
@@ -129,7 +184,7 @@
     {anio:4, nombre: "Derecho del trabajo y derecho de la seguridad social", tipo: "oblig", anio:4, cuatri:2, correl: ["Derecho Constitucional", "Contratos"] },
     
 
-    // 5to Año
+    / 5to Año
     {anio:5, nombre: "Filosofía del Derecho", tipo: "oblig", anio: 5, cuatri: 1, correl: ["Derechos Humanos","Nociones de Sociología"] },
     {anio:5, nombre: "Derecho de Familia y de las Sucesiones", tipo: "oblig", anio: 5, cuatri: 1, correl: ["Derecho Reales","Derecho Procesal I: Teoría General del Proceso y Proceso Penal"] },
     {anio:5, nombre: "Derecho del Transporte", tipo: "oblig", anio: 5, cuatri: 1, correl: ["Derecho de la Empresa y los Negocios"] },
@@ -138,96 +193,88 @@
     {anio:5, nombre: "concursos y privilegios", tipo: "oblig", anio: 5, cuatri: 2, correl: ["Derecho Societario y Derecho Cambiario",  "Derecho Procesal I: Teoría General del Proceso y Proceso Penal"] },
     {anio:5, nombre: "Destrezas IV: Habilidades para el Litigio", tipo: "destrezas", anio: 5, cuatri: 2, correl: ["Destrezas III: Investigación Jurídica", "Contratos", "Derecho Procesal I: Teoría General del Proceso y Proceso Penal"] },
 
-    // 6to Año
+    / 6to Año
     {anio:6,  nombre: "Derecho Internacional Público y Politica exterior", tipo: "oblig", anio: 6, cuatri: 1, correl: ["Derechos humanos"] },
     {anio:6,  nombre: "Derecho Tributario y Derecho Financiero", tipo: "oblig", anio: 6, cuatri: 1, correl: ["Derecho Administrativo"] },
     {anio:6,  nombre: "Optativa IV", tipo: "optativa", anio: 6, cuatri: 1, correl: [] },
     {anio:6,  nombre: "optativa V", tipo: "optativa", anio: 6, cuatri: 2, correl: [] },
     {anio:6,  nombre: "Destrezas V: Práctica Profesional Aplicada", tipo: "destrezas", anio: 6, cuatri: 1, correl: ["Derecho de Familia y de las Sucesiones", "Derecho Procesal II: Proceso Civil y Comercial","Destrezas IV: Habilidades para el Litigio"] },
-    {anio:6,  nombre: "Derecho Internacional Privado", tipo: "oblig", anio: 6, cuatri: 2, correl: ["Derecho de Familia y de las Sucesiones","concursos y privilegios"] },
+    {anio:6,  nombre: "Derecho Internacional Privado", tipo: "oblig", anio: 6, cuatri: 2, correl: ["Derecho de Familia y de las Sucesiones","concursos y privilegios"],
+      
     ];
 
-    const STORAGE_KEY = "materias_aprobadas";
-    const NOTAS_KEY = "materias_notas";
 
-    function guardar(ids, notas) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
-      localStorage.setItem(NOTAS_KEY, JSON.stringify(notas));
+    const STORAGE_KEY = "malla_abogacia_aprobadas";
+    function guardar(aprobadas) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(aprobadas));
     }
-
     function cargar() {
-      return {
-        aprobadas: JSON.parse(localStorage.getItem(STORAGE_KEY)) || [],
-        notas: JSON.parse(localStorage.getItem(NOTAS_KEY)) || {}
-      };
+      try {
+        const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (Array.isArray(data)) return data;
+      } catch {}
+      return [];
     }
 
-    function puedeDesbloquear(m, aprobadas) {
-      return m.correl.every(id => aprobadas.includes(id));
+    function puedeCursar(m, aprobadas) {
+      return m.correl.every(c => aprobadas.includes(c));
     }
 
-    function render() {
-      const { aprobadas, notas } = cargar();
-      const cont = document.getElementById("mallaContainer");
-      cont.innerHTML = "";
+    function renderMalla() {
+      const contenedor = document.getElementById('malla');
+      const aprobadas = cargar();
+      contenedor.innerHTML = '';
       for (let anio = 1; anio <= 6; anio++) {
-        const añoMaterias = materias.filter(m => m.anio === anio);
-        if (añoMaterias.length === 0) continue;
-        const div = document.createElement("div");
-        div.innerHTML = `<h2>${anio}° Año</h2><div class="materias"></div>`;
-        const matDiv = div.querySelector(".materias");
+        const porAnio = materias.filter(m => m.anio === anio);
+        if (porAnio.length === 0) continue;
 
-        añoMaterias.forEach(m => {
-          const el = document.createElement("div");
-          el.className = "materia";
-          el.textContent = m.nombre;
-          if (aprobadas.includes(m.id)) {
-            el.classList.add("aprobada", "desbloqueada");
-          } else if (puedeDesbloquear(m, aprobadas)) {
-            el.classList.add("desbloqueada");
-            el.onclick = () => {
-              const nota = prompt("¿Qué nota obtuviste? (usa punto: 7.5)");
-              if (nota && !isNaN(parseFloat(nota))) {
-                aprobadas.push(m.id);
-                notas[m.id] = parseFloat(nota);
-                guardar(aprobadas, notas);
-                render();
-              }
-            };
-          }
-          matDiv.appendChild(el);
-        });
+        const divAnio = document.createElement('div');
+        divAnio.className = 'anio';
+        divAnio.innerHTML = `<h2>${anio}° Año</h2>`;
 
-        cont.appendChild(div);
+        for (let cuatri = 1; cuatri <= 2; cuatri++) {
+          const porCuatri = porAnio.filter(m => m.cuatri === cuatri);
+          if (porCuatri.length === 0) continue;
+
+          const divCuatri = document.createElement('div');
+          divCuatri.className = 'cuatri';
+          divCuatri.innerHTML = `<h3>${cuatri}° Cuatrimestre</h3>`;
+
+          porCuatri.forEach(m => {
+            const desbloqueada = puedeCursar(m, aprobadas);
+            const aprobada = aprobadas.includes(m.id);
+
+            const div = document.createElement('div');
+            div.className = 'materia';
+            if (desbloqueada) div.classList.add('desbloqueada');
+            if (aprobada) div.classList.add('aprobada');
+            div.setAttribute('data-id', m.id);
+            div.innerHTML = `<div>${m.nombre}</div>
+              ${m.correl.length > 0 ? `<div class="correlativas"><strong>Correlativas:</strong> ${m.correl.join(', ')}</div>` : ''}`;
+            if (desbloqueada) {
+              div.addEventListener('click', () => {
+                const id = m.id;
+                let nuevas = cargar();
+                if (nuevas.includes(id)) {
+                  nuevas = nuevas.filter(x => x !== id);
+                } else {
+                  nuevas.push(id);
+                }
+                guardar(nuevas);
+                renderMalla();
+              });
+            }
+            divCuatri.appendChild(div);
+          });
+
+          divAnio.appendChild(divCuatri);
+        }
+
+        contenedor.appendChild(divAnio);
       }
+    }
 
-      // progreso
-      const desbloqueadas = materias.filter(m => puedeDesbloquear(m, aprobadas)).length;
-      const bloqueadas = materias.length - desbloqueadas;
-      const progreso = document.getElementById("progreso");
-      progreso.innerHTML = `
-        <h3>📊 Progreso</h3>
-        <p>Aprobadas: ${aprobadas.length}</p>
-        <p>Desbloqueadas: ${desbloqueadas}</p>
-        <p>Bloqueadas: ${bloqueadas}</p>
-        <p>Porcentaje Completado: ${((aprobadas.length / materias.length) * 100).toFixed(1)}%</p>
-      `;
-
-      // promedio
-      const notasArray = Object.values(notas);
-      const promedio = document.getElementById("promedio");
-      if (notasArray.length > 0) {
-        const suma = notasArray.reduce((a, b) => a + b, 0);
-        const max = Math.max(...notasArray);
-        const min = Math.min(...notasArray);
-        promedio.innerHTML = `
-          <h3>🎓 Promedio</h3>
-          <p>Promedio General: ${(suma / notasArray.length).toFixed(2)}</p>
-          <p>Nota más alta: ${max}</p>
-          <p>Nota más baja: ${min}</p>
-        `;
-      } else {
-        promedio.innerHTML = `<h3>🎓 Promedio</h3><p>Aún no hay notas cargadas<
-
-     
-
+    renderMalla();
+  </script>
+</body>
+</html>
