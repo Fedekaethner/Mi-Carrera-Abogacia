@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff0f5;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #c71585;
+}
+
+.materia {
+  padding: 10px;
+  margin: 6px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.anio-cuatrimestre {
+  margin-bottom: 30px;
+}
+
+.bloqueada {
+  background-color: #f9dce4;
+  color: #888;
+  pointer-events: none;
+}
+
+.desbloqueada {
+  background-color: #f78fb3;
+  color: white;
+}
+
+.libre {
+  background-color: white;
+  border: 1px solid #f78fb3;
+  color: #c71585;
+}
+
+.aprobada {
+  background-color: #e0e0e0;
+  color: #666;
+  text-decoration: line-through;
+  pointer-events: none;
+}
