@@ -19,7 +19,7 @@ h1 {
   padding-bottom: 10px;
 }
 
-.anio-cuatrimestre-vertical {
+.anio-columna {
   display: flex;
   flex-direction: column;
   border-left: 4px solid #c71585;
@@ -70,3 +70,4 @@ h1 {
   pointer-events: none;
   cursor: default;
 }
+
