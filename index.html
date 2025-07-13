@@ -1,163 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Malla Interactiva Abogacía</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Malla Abogacía Vertical</title>
   <style>
     body {
-      background: linear-gradient(135deg, #fde6fa, #e7f7fd, #ede6fb);
-      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(to bottom, #fde6fa, #f3e6fd);
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      color: #222;
-      min-height: 100vh;
+      color: #6c3483;
     }
+
     header {
-      background: linear-gradient(90deg, #f9d2e6, #e2eafc, #e5d0fa);
-      color: #6c3483;
-      padding: 28px 0 16px 0;
+      background: linear-gradient(90deg, #f9d2e6 0%, #e5d0fa 100%);
       text-align: center;
-      font-size: 2.2rem;
+      padding: 24px 0;
+      font-size: 2rem;
       font-weight: bold;
-      box-shadow: 0 2px 16px #e7bde2bb;
-    }
-    .malla-container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 32px;
-      background: #fff7fc;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(198, 169, 246, 0.11);
-    }
-    .anio {
-      margin-bottom: 36px;
-    }
-    .anio h2 {
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-      color: #8e44ad;
-    }
-    .cuatri {
-      margin-bottom: 28px;
-    }
-    .cuatri h3 {
-      font-size: 1.2rem;
       color: #6c3483;
-      margin-bottom: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
-    .materias {
+
+    .malla-container {
       display: flex;
-      flex-wrap: wrap;
+      overflow-x: auto;
+      padding: 32px;
+      gap: 24px;
+    }
+
+    .anio {
+      min-width: 220px;
+      background: #fff0fa;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
       gap: 16px;
     }
-    .materia {
-      flex: 1 1 220px;
-      background: linear-gradient(135deg, #ffe3f1, #e2f0fb, #f0e9ff);
-      border: 1.5px solid #e8eaf6;
-      border-radius: 12px;
-      padding: 18px 12px;
-      position: relative;
+
+    .anio h2 {
       text-align: center;
-      color: #5c246e;
-      font-weight: 500;
-      opacity: 0.5;
-      filter: grayscale(0.3);
-      transition: all 0.2s ease;
-      cursor: not-allowed;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #a64ca6;
     }
+
+    .cuatrimestre {
+      background: #fce7fa;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .cuatrimestre h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #9c27b0;
+    }
+
+    .materia {
+      background: linear-gradient(135deg, #ffe6f0, #f0dbfc);
+      border: 1px solid #e8d2f1;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: all 0.2s;
+    }
+
     .materia.desbloqueada {
       opacity: 1;
-      filter: none;
-      cursor: pointer;
-      border-color: #a5aae3;
-      background: linear-gradient(135deg, #fbd4ec, #dce9fd, #e6d8fb);
+      box-shadow: 0 0 4px #e6b8fa;
     }
+
     .materia.aprobada {
-      background: linear-gradient(135deg, #e3ffec, #e2f0fb);
-      color: #25906b;
-      border-color: #b8f7c9;
       text-decoration: line-through;
-      opacity: 0.9;
-      filter: none;
+      background: #e9d6ff;
+      color: #6e2ca9;
+      opacity: 1;
     }
-    .materia .nombre {
-      font-size: 1.05em;
-      font-weight: 600;
-    }
-    .materia .correlativas {
-      font-size: 0.9em;
-      margin-top: 8px;
-      background: #f6e9fa;
-      padding: 4px 6px;
-      border-radius: 6px;
-      border: 1px dashed #d6b6e7;
-      color: #8e44ad;
-    }
+
     .leyenda {
-      max-width: 800px;
-      margin: 18px auto;
-      background: #f6e9fa;
-      color: #6c3483;
-      border-radius: 7px;
-      padding: 6px 18px;
-      font-size: 1em;
       display: flex;
-      gap: 18px;
-      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 16px;
+      background: #fce7fa;
+      padding: 10px 20px;
+      border-radius: 10px;
     }
-    .leyenda .cuadro {
-      width: 18px;
-      height: 18px;
+
+    .cuadro {
+      width: 16px;
+      height: 16px;
       display: inline-block;
-      border-radius: 5px;
       margin-right: 6px;
-      border: 1.5px solid #c2b6e7;
+      border: 1px solid #b39ddb;
+      border-radius: 4px;
     }
-    .l1 { background: linear-gradient(135deg, #fbd4ec, #dce9fd, #e6d8fb); }
-    .l2 { background: linear-gradient(135deg, #e3ffec, #e2f0fb); }
-    .l3 { background: #eeeeee; }
+
+    .rosa { background: #ffd1eb; }
+    .violeta { background: #d8b6ff; }
+    .gris { background: #ececec; }
+
     .reset-btn {
       margin-left: auto;
-      background: #e5d0fa;
+      background: #e8c0ff;
       border: none;
       color: #6c3483;
-      padding: 7px 17px;
-      border-radius: 7px;
+      padding: 6px 12px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0 1px 4px #d7c7f6bb;
-    }
-    .reset-btn:hover {
-      background: #fcdff7;
-    }
-    @media (max-width: 800px) {
-      .materias {
-        flex-direction: column;
-      }
     }
   </style>
 </head>
 <body>
   <header>Malla Interactiva Abogacía</header>
-
   <div class="leyenda">
-    <span><span class="cuadro l1"></span> Desbloqueada</span>
-    <span><span class="cuadro l2"></span> Aprobada</span>
-    <span><span class="cuadro l3"></span> Bloqueada</span>
-    <button class="reset-btn" onclick="resetearMalla()">Reiniciar Progreso</button>
+    <span><span class="cuadro rosa"></span> Desbloqueada</span>
+    <span><span class="cuadro violeta"></span> Aprobada</span>
+    <span><span class="cuadro gris"></span> Bloqueada</span>
+    <button class="reset-btn" onclick="resetearMalla()">Reiniciar</button>
   </div>
 
   <div class="malla-container" id="mallaContainer"></div>
 
   <script>
     const materias = [
-      { anio: 1, cuatri: 1, id: "ctcc", nombre: "Contenidos Transversales para la Construcción de la Ciudadanía", correl: [] },
-      { anio: 1, cuatri: 1, id: "hpj", nombre: "Historia del Pensamiento Político y Jurídico", correl: [] },
-      { anio: 1, cuatri: 1, id: "tdj", nombre: "Teoría del Derecho y la Justicia", correl: [] },
-      { anio: 1, cuatri: 2, id: "te", nombre: "Teoría del Estado", correl: [] },
-      { anio: 1, cuatri: 2, id: "ne", nombre: "Nociones de Economía", correl: [] },
-      { anio: 1, cuatri: 2, id: "d1", nombre: "Destrezas I: Investigación y Escritura Jurídicas Básicas", correl: [] },
+      { anio: 1, cuatri: 1, nombre: "Contenidos Transversales" },
+      { anio: 1, cuatri: 1, nombre: "Historia del Pensamiento" },
+      { anio: 1, cuatri: 1, nombre: "Teoría del Derecho" },
+      { anio: 1, cuatri: 2, nombre: "Teoría del Estado" },
+      { anio: 1, cuatri: 2, nombre: "Economía" },
+      { anio: 1, cuatri: 2, nombre: "Destrezas I" },
 
       { anio: 2, cuatri: 1, id: "log", nombre: "Lógica", correl: ["ctcc", "hpj", "tdj"] },
       { anio: 2, cuatri: 1, id: "dp", nombre: "Derecho Privado: Teoría de la Rel. Juríd. y de la Persona", correl: ["ctcc", "tdj", "ne", "d1"] },
@@ -199,70 +178,66 @@
       { anio: 6, cuatri: 2, id: "dipi", nombre: "Derecho Internacional Privado", correl: ["dfs", "cq"] },
     ];
 
-    const STORAGE_KEY = "malla_abogacia_estado";
+    const STORAGE_KEY = "malla_abogacia_vertical";
 
-    function guardarEstado(aprobadas) {
+    function guardar(aprobadas) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(aprobadas));
     }
-    function cargarEstado() {
-      const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return Array.isArray(data) ? data : [];
+
+    function cargar() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      return data ? JSON.parse(data) : [];
     }
+
     function resetearMalla() {
-      if (confirm("¿Seguro que quieres reiniciar tu progreso?")) {
+      if (confirm("¿Seguro que querés reiniciar tu progreso?")) {
         localStorage.removeItem(STORAGE_KEY);
-        renderMalla();
+        render();
       }
     }
-    function getMateria(id) {
-      return materias.find(m => m.id === id);
-    }
-    function puedeDesbloquear(m, aprobadas) {
-      return m.correl.every(c => aprobadas.includes(c));
-    }
 
-    function renderMalla() {
+    function render() {
       const container = document.getElementById("mallaContainer");
-      const aprobadas = cargarEstado();
-      let html = "";
-
+      container.innerHTML = "";
+      const aprobadas = cargar();
       for (let anio = 1; anio <= 6; anio++) {
-        html += `<div class="anio"><h2>${anio}° Año</h2>`;
+        const col = document.createElement("div");
+        col.className = "anio";
+        col.innerHTML = `<h2>${anio}º Año</h2>`;
+
         for (let cuatri = 1; cuatri <= 2; cuatri++) {
-          const grupo = materias.filter(m => m.anio === anio && m.cuatri === cuatri);
-          if (!grupo.length) continue;
-          html += `<div class="cuatri"><h3>${cuatri}° Cuatrimestre</h3><div class="materias">`;
-          grupo.forEach(m => {
-            const aprobada = aprobadas.includes(m.id);
-            const desbloqueada = puedeDesbloquear(m, aprobadas);
-            html += `<div class="materia${desbloqueada ? ' desbloqueada' : ''}${aprobada ? ' aprobada' : ''}" 
-              data-id="${m.id}" ${!desbloqueada ? 'title="Correlativas: ' + m.correl.map(cid => getMateria(cid)?.nombre || "").join(', ') + '"' : ''}>
-              <div class="nombre">${m.nombre}</div>
-            </div>`;
+          const box = document.createElement("div");
+          box.className = "cuatrimestre";
+          box.innerHTML = `<h3>${cuatri}º Cuatrimestre</h3>`;
+          const materiasCuatri = materias.filter(m => m.anio === anio && m.cuatri === cuatri);
+
+          materiasCuatri.forEach(mat => {
+            const div = document.createElement("div");
+            div.className = "materia desbloqueada";
+            if (aprobadas.includes(mat.nombre)) {
+              div.classList.add("aprobada");
+            }
+            div.textContent = mat.nombre;
+            div.onclick = () => {
+              if (aprobadas.includes(mat.nombre)) {
+                const i = aprobadas.indexOf(mat.nombre);
+                aprobadas.splice(i, 1);
+              } else {
+                aprobadas.push(mat.nombre);
+              }
+              guardar(aprobadas);
+              render();
+            };
+            box.appendChild(div);
           });
-          html += `</div></div>`;
+
+          col.appendChild(box);
         }
-        html += `</div>`;
+        container.appendChild(col);
       }
-
-      container.innerHTML = html;
-
-      document.querySelectorAll(".materia.desbloqueada").forEach(el => {
-        el.onclick = () => {
-          const id = el.dataset.id;
-          let estado = cargarEstado();
-          if (estado.includes(id)) {
-            estado = estado.filter(x => x !== id);
-          } else {
-            estado.push(id);
-          }
-          guardarEstado(estado);
-          renderMalla();
-        }
-      });
     }
 
-    renderMalla();
+    render();
   </script>
 </body>
 </html>
