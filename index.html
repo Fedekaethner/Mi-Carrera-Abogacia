@@ -2,135 +2,97 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Malla Abogacía Vertical</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abogacía - UNT ✨</title>
   <style>
-     body {
-  background: #ffffff;
+    body {
+      background-color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #4a235a;
     }
-
     header {
-      background: linear-gradient(90deg, #f9d2e6 0%, #e5d0fa 100%);
-      text-align: center;
+      background: #fce4ec;
+      color: #ad1457;
       padding: 24px 0;
+      text-align: center;
       font-size: 2rem;
       font-weight: bold;
-      color: #6c3483;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(240, 180, 200, 0.5);
     }
-
     .malla-container {
-      display: flex;
-      overflow-x: auto;
-      padding: 32px;
-      gap: 24px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
     }
-
-    .anio {
-      min-width: 220px;
-      background: #fff0fa;
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
     .anio h2 {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-      color: #a64ca6;
-    }
-
-    .cuatrimestre {
-      background: #fce7fa;
-      border-radius: 10px;
+      background: #f8bbd0;
+      color: #880e4f;
       padding: 10px;
+      border-radius: 8px;
     }
-
-    .cuatrimestre h3 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-      color: #9c27b0;
+    .materias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-
     .materia {
-      background: linear-gradient(135deg, #ffe6f0, #f0dbfc);
-      border: 1px solid #e8d2f1;
+      flex: 1 1 200px;
+      padding: 16px;
       border-radius: 10px;
-      padding: 10px;
-      margin-bottom: 8px;
-      cursor: default;
-      ponter-events: none;
+      background: #fce4ec;
+      box-shadow: 0 2px 8px rgba(252, 228, 236, 0.7);
       opacity: 0.5;
       transition: all 0.2s;
+      cursor: not-allowed;
+      text-align: center;
     }
-
     .materia.desbloqueada {
       opacity: 1;
-      box-shadow: 0 0 4px #e6b8fa;
-      pointer-events: auto;
       cursor: pointer;
+      border: 2px solid #f48fb1;
     }
-
     .materia.aprobada {
+      background: #f8bbd0;
+      color: #4a235a;
       text-decoration: line-through;
-      background: #e9d6ff;
-      color: #6e2ca9;
-      opacity: 1;
     }
-
-    .leyenda {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin: 16px;
-      background: #fce7fa;
-      padding: 10px 20px;
+    .leyenda, .progreso-container, .promedio-container {
+      background: #fce4ec;
+      margin: 20px auto;
+      padding: 14px;
       border-radius: 10px;
+      max-width: 800px;
+      color: #6a1b9a;
     }
-
     .cuadro {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       display: inline-block;
       margin-right: 6px;
-      border: 1px solid #b39ddb;
-      border-radius: 4px;
+      border-radius: 3px;
+      border: 1px solid #c2185b;
     }
-
-    .rosa { background: #ffd1eb; }
-    .violeta { background: #d8b6ff; }
-    .gris { background: #ececec; }
-
-    .reset-btn {
-      margin-left: auto;
-      background: #e8c0ff;
-      border: none;
-      color: #6c3483;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+    .l1 { background: #fce4ec; }
+    .l2 { background: #f8bbd0; }
+    .l3 { background: #e0e0e0; }
   </style>
 </head>
 <body>
-  <header>Malla Interactiva Abogacía</header>
+  <header>Abogacía - UNT ✨</header>
   <div class="leyenda">
-    <span><span class="cuadro rosa"></span> Desbloqueada</span>
-    <span><span class="cuadro violeta"></span> Aprobada</span>
-    <span><span class="cuadro gris"></span> Bloqueada</span>
-    <button class="reset-btn" onclick="resetearMalla()">Reiniciar</button>
+    <span><span class="cuadro l1"></span> Desbloqueada</span>
+    <span><span class="cuadro l2"></span> Aprobada</span>
+    <span><span class="cuadro l3"></span> Bloqueada</span>
   </div>
-
   <div class="malla-container" id="mallaContainer"></div>
+  <div class="progreso-container" id="progreso"></div>
+  <div class="promedio-container" id="promedio"></div>
 
   <script>
     const materias = [
-     // 1er Año
+    / 1er Año
     {anio:1, nombre: "Contenidos Transversales para la Construcción de la Ciudadanía", tipo: "oblig", anio: 1, cuatri: 1, correl: [] },
     {anio:1, nombre: "Historia del Pensamiento Político y Jurídico", tipo: "oblig", anio: 1, cuatri: 1, correl: [] },
     {anio:1, nombre: "Teoría del Derecho y la Justicia", tipo: "oblig", anio: 1, cuatri: 2, correl: [] },
@@ -185,67 +147,87 @@
     {anio:6,  nombre: "Derecho Internacional Privado", tipo: "oblig", anio: 6, cuatri: 2, correl: ["Derecho de Familia y de las Sucesiones","concursos y privilegios"] },
     ];
 
-    const STORAGE_KEY = "malla_abogacia_vertical";
+    const STORAGE_KEY = "materias_aprobadas";
+    const NOTAS_KEY = "materias_notas";
 
-    function guardar(aprobadas) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(aprobadas));
+    function guardar(ids, notas) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+      localStorage.setItem(NOTAS_KEY, JSON.stringify(notas));
     }
 
     function cargar() {
-      const data = localStorage.getItem(STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
+      return {
+        aprobadas: JSON.parse(localStorage.getItem(STORAGE_KEY)) || [],
+        notas: JSON.parse(localStorage.getItem(NOTAS_KEY)) || {}
+      };
     }
 
-    function resetearMalla() {
-      if (confirm("¿Seguro que querés reiniciar tu progreso?")) {
-        localStorage.removeItem(STORAGE_KEY);
-        render();
-      }
+    function puedeDesbloquear(m, aprobadas) {
+      return m.correl.every(id => aprobadas.includes(id));
     }
 
     function render() {
-      const container = document.getElementById("mallaContainer");
-      container.innerHTML = "";
-      const aprobadas = cargar();
+      const { aprobadas, notas } = cargar();
+      const cont = document.getElementById("mallaContainer");
+      cont.innerHTML = "";
       for (let anio = 1; anio <= 6; anio++) {
-        const col = document.createElement("div");
-        col.className = "anio";
-        col.innerHTML = `<h2>${anio}º Año</h2>`;
+        const añoMaterias = materias.filter(m => m.anio === anio);
+        if (añoMaterias.length === 0) continue;
+        const div = document.createElement("div");
+        div.innerHTML = `<h2>${anio}° Año</h2><div class="materias"></div>`;
+        const matDiv = div.querySelector(".materias");
 
-        for (let cuatri = 1; cuatri <= 2; cuatri++) {
-          const box = document.createElement("div");
-          box.className = "cuatrimestre";
-          box.innerHTML = `<h3>${cuatri}º Cuatrimestre</h3>`;
-          const materiasCuatri = materias.filter(m => m.anio === anio && m.cuatri === cuatri);
-
-          materiasCuatri.forEach(mat => {
-            const div = document.createElement("div");
-            div.className = "materia desbloqueada";
-            if (aprobadas.includes(mat.nombre)) {
-              div.classList.add("aprobada");
-            }
-            div.textContent = mat.nombre;
-            div.onclick = () => {
-              if (aprobadas.includes(mat.nombre)) {
-                const i = aprobadas.indexOf(mat.nombre);
-                aprobadas.splice(i, 1);
-              } else {
-                aprobadas.push(mat.nombre);
+        añoMaterias.forEach(m => {
+          const el = document.createElement("div");
+          el.className = "materia";
+          el.textContent = m.nombre;
+          if (aprobadas.includes(m.id)) {
+            el.classList.add("aprobada", "desbloqueada");
+          } else if (puedeDesbloquear(m, aprobadas)) {
+            el.classList.add("desbloqueada");
+            el.onclick = () => {
+              const nota = prompt("¿Qué nota obtuviste? (usa punto: 7.5)");
+              if (nota && !isNaN(parseFloat(nota))) {
+                aprobadas.push(m.id);
+                notas[m.id] = parseFloat(nota);
+                guardar(aprobadas, notas);
+                render();
               }
-              guardar(aprobadas);
-              render();
             };
-            box.appendChild(div);
-          });
+          }
+          matDiv.appendChild(el);
+        });
 
-          col.appendChild(box);
-        }
-        container.appendChild(col);
+        cont.appendChild(div);
       }
-    }
 
-    render();
-  </script>
-</body>
-</html>
+      // progreso
+      const desbloqueadas = materias.filter(m => puedeDesbloquear(m, aprobadas)).length;
+      const bloqueadas = materias.length - desbloqueadas;
+      const progreso = document.getElementById("progreso");
+      progreso.innerHTML = `
+        <h3>📊 Progreso</h3>
+        <p>Aprobadas: ${aprobadas.length}</p>
+        <p>Desbloqueadas: ${desbloqueadas}</p>
+        <p>Bloqueadas: ${bloqueadas}</p>
+        <p>Porcentaje Completado: ${((aprobadas.length / materias.length) * 100).toFixed(1)}%</p>
+      `;
+
+      // promedio
+      const notasArray = Object.values(notas);
+      const promedio = document.getElementById("promedio");
+      if (notasArray.length > 0) {
+        const suma = notasArray.reduce((a, b) => a + b, 0);
+        const max = Math.max(...notasArray);
+        const min = Math.min(...notasArray);
+        promedio.innerHTML = `
+          <h3>🎓 Promedio</h3>
+          <p>Promedio General: ${(suma / notasArray.length).toFixed(2)}</p>
+          <p>Nota más alta: ${max}</p>
+          <p>Nota más baja: ${min}</p>
+        `;
+      } else {
+        promedio.innerHTML = `<h3>🎓 Promedio</h3><p>Aún no hay notas cargadas<
+
+     
 
