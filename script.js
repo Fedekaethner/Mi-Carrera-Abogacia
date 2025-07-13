@@ -59,39 +59,54 @@ function renderMalla() {
   const container = document.getElementById("malla-container");
   container.innerHTML = "";
 
+  // Agrupar por año y luego por cuatrimestre
   const agrupadas = {};
   materias.forEach(m => {
-    const key = `${m.anio}º Año - ${m.cuatri}º Cuatrimestre`;
-    if (!agrupadas[key]) agrupadas[key] = [];
-    agrupadas[key].push(m);
+    if (!agrupadas[m.anio]) agrupadas[m.anio] = {};
+    if (!agrupadas[m.anio][m.cuatri]) agrupadas[m.anio][m.cuatri] = [];
+    agrupadas[m.anio][m.cuatri].push(m);
   });
 
-  for (const bloque in agrupadas) {
-    const div = document.createElement("div");
-    div.className = "anio-cuatrimestre";
-    const titulo = document.createElement("h2");
-    titulo.textContent = bloque;
-    div.appendChild(titulo);
+  // Recorrer años ordenados
+  Object.keys(agrupadas).sort((a, b) => a - b).forEach(anio => {
+    const divAnio = document.createElement("div");
+    divAnio.className = "anio-cuatrimestre-vertical";
 
-    agrupadas[bloque].forEach(m => {
-      const matDiv = document.createElement("div");
-      matDiv.className = "materia";
+    const tituloAnio = document.createElement("h2");
+    tituloAnio.textContent = `${anio}º Año`;
+    divAnio.appendChild(tituloAnio);
 
-      if (aprobadas.includes(m.id)) {
-        matDiv.classList.add("aprobada");
-      } else if (m.correl.length === 0 || m.correl.every(c => aprobadas.includes(c))) {
-        matDiv.classList.add(m.correl.length === 0 ? "libre" : "desbloqueada");
-        matDiv.addEventListener("click", () => aprobarMateria(m.id));
-      } else {
-        matDiv.classList.add("bloqueada");
-      }
+    // Recorrer cuatrimestres ordenados
+    Object.keys(agrupadas[anio]).sort((a, b) => a - b).forEach(cuatri => {
+      const divCuatri = document.createElement("div");
+      divCuatri.className = "cuatrimestre-vertical";
 
-      matDiv.textContent = m.nombre;
-      div.appendChild(matDiv);
+      const tituloCuatri = document.createElement("h3");
+      tituloCuatri.textContent = `${cuatri}º Cuatrimestre`;
+      divCuatri.appendChild(tituloCuatri);
+
+      agrupadas[anio][cuatri].forEach(m => {
+        const matDiv = document.createElement("div");
+        matDiv.className = "materia";
+
+        if (aprobadas.includes(m.id)) {
+          matDiv.classList.add("aprobada");
+        } else if (m.correl.length === 0 || m.correl.every(c => aprobadas.includes(c))) {
+          matDiv.classList.add(m.correl.length === 0 ? "libre" : "desbloqueada");
+          matDiv.addEventListener("click", () => aprobarMateria(m.id));
+        } else {
+          matDiv.classList.add("bloqueada");
+        }
+
+        matDiv.textContent = m.nombre;
+        divCuatri.appendChild(matDiv);
+      });
+
+      divAnio.appendChild(divCuatri);
     });
 
-    container.appendChild(div);
-  }
+    container.appendChild(divAnio);
+  });
 }
 
 function aprobarMateria(id) {
