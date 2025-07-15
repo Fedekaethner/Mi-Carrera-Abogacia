@@ -108,7 +108,10 @@ function renderMalla() {
     container.appendChild(divAnio);
   });
 }
-
+let materias = JSON.parse(localStorage.getItem("materiasAprobadas"));
+let nuevaLista = materias.filter(id => id !== 15); //
+localStorage.setItem("materiasAprobadas", JSON.stringify(nuevaLista));
+location.reload();
 function aprobarMateria(id) {
   if (!aprobadas.includes(id)) {
     aprobadas.push(id);
