@@ -18,7 +18,7 @@ const materias = [
   // 3er Año
   { id: 13, nombre: "Contratos", tipo: "oblig", anio: 3, cuatri: 1, correl: [11] },
   { id: 14, nombre: "Derecho Penal II Parte Especial", tipo: "oblig", anio: 3, cuatri: 1, correl: [9] },
-  { id: 15, nombre: "Optativa I", tipo: "optativa", anio: 3, cuatri: 1, correl: [] },
+
   { id: 16, nombre: "Derecho Procesal I: Teoría General del Proceso y Proceso Penal", tipo: "oblig", anio: 3, cuatri: 2, correl: [10, 8, 14] },
   { id: 17, nombre: "Derecho de la Empresa y los Negocios", tipo: "oblig", anio: 3, cuatri: 2, correl: [13] },
   { id: 18, nombre: "Derechos Humanos", tipo: "oblig", anio: 3, cuatri: 2, correl: [10] },
