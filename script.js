@@ -4,7 +4,7 @@ const materias = [
   { id: 2, nombre: "Historia del Pensamiento Político y Jurídico", anio: 1, cuatri: 1, correl: [] },
   { id: 3, nombre: "Teoría del Derecho y la Justicia", anio: 1, cuatri: 2, correl: [] },
   { id: 4, nombre: "Teoría del Estado", anio: 1, cuatri: 2, correl: [] },
-  { id: 5, nombre: "nociones de economia", anio: 1, cuatri: 2, correl: [] },
+  { id: 5, nombre: "Nociones de economia", anio: 1, cuatri: 2, correl: [] },
   { id: 6, nombre: "Destrezas I: Investigación y Escritura Jurídicas Básicas", anio: 1, cuatri: 2, correl: [] },
 
   // 2do Año
